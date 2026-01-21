@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore expert pet care, breed guides, and health tips for dog and cat owners. Join our community for the best pet advice and product reviews.">
+    <meta name="keywords" content="pet care, dog breeds, cat health, pet product reviews, vet tips, dog food allergies">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="PetPulse | Expert Pet Care & Reviews">
+    <meta property="og:description" content="Detailed breed guides, honest product reviews, and health tips for your furry friends.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1450778869180-41d0601e046e?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:url" content="https://www.petpulse.com">
+    
+    <title>PetPulse | The Ultimate Pet Care Network</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts with font-display: swap for better performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .serif { font-family: 'Merriweather', serif; }
+        
+        /* AdSense Placeholder Styling */
+        .ad-slot {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #94a3b8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            min-height: 100px;
+        }
+        
+        .nav-active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        /* SEO Friendly Table Styles */
+        .seo-table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+        }
+        .seo-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 0.95rem;
+        }
+        .seo-table th, .seo-table td {
+            border: 1px solid #e2e8f0;
+            padding: 1rem;
+            text-align: left;
+        }
+        .seo-table th {
+            background-color: #f1f5f9;
+            font-weight: 700;
+            color: #334155;
+        }
+        .seo-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        /* Typography for Blog Content */
+        .blog-content h2 { font-size: 1.75rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; }
+        .blog-content h3 { font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #334155; }
+        .blog-content p { margin-bottom: 1.25rem; line-height: 1.75; color: #475569; }
+        .blog-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #475569; }
+        .blog-content li { margin-bottom: 0.5rem; }
+        .blog-content strong { color: #0f172a; font-weight: 600; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Global Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" onclick="router('home')" class="flex items-center gap-2 text-2xl font-bold text-blue-600 hover:text-blue-700 transition">
+                    <i class="fa-solid fa-paw"></i> PetPulse
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="router('breeds')" id="nav-breeds" class="text-gray-600 hover:text-blue-600 font-medium py-5 border-b-2 border-transparent transition">Breed Encyclopedia</button>
+                    <button onclick="router('products')" id="nav-products" class="text-gray-600 hover:text-blue-600 font-medium py-5 border-b-2 border-transparent transition">Product Hub</button>
+                    <button onclick="router('health')" id="nav-health" class="text-gray-600 hover:text-blue-600 font-medium py-5 border-b-2 border-transparent transition">Health & Tips</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-600 focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 space-y-3 shadow-lg">
+            <button onclick="router('breeds')" class="block w-full text-left py-2 font-medium text-gray-700 active:bg-gray-50">Breed Encyclopedia</button>
+            <button onclick="router('products')" class="block w-full text-left py-2 font-medium text-gray-700 active:bg-gray-50">Product Hub</button>
+            <button onclick="router('health')" class="block w-full text-left py-2 font-medium text-gray-700 active:bg-gray-50">Health & Tips</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area (Dynamic Injection) -->
+    <main id="app" class="flex-grow container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Content injected via JS -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-auto">
+        <div class="container mx-auto px-4 grid md:grid-cols-4 gap-8">
+            <div class="col-span-1">
+                <h3 class="text-white text-lg font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-paw"></i> PetPulse</h3>
+                <p class="text-sm leading-relaxed text-slate-400">The #1 trusted source for pet owners. We provide data-driven breed guides, unbiased product testing, and veterinary-approved health advice.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Explore</h4>
+                <ul class="space-y-2 text-sm text-slate-400">
+                    <li><button onclick="router('breeds')" class="hover:text-white transition">Dog Breeds A-Z</button></li>
+                    <li><button onclick="router('products')" class="hover:text-white transition">Best Dog Food 2026</button></li>
+                    <li><button onclick="router('health')" class="hover:text-white transition">Senior Pet Care</button></li>
+                    <li><button onclick="router('products')" class="hover:text-white transition">Indestructible Toys</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Company</h4>
+                <ul class="space-y-2 text-sm text-slate-400">
+                    <li><button onclick="router('privacy')" class="hover:text-white transition">Privacy Policy</button></li>
+                    <li><button onclick="router('terms')" class="hover:text-white transition">Terms of Service</button></li>
+                    <li><button onclick="router('affiliate')" class="hover:text-white transition">Affiliate Disclosure</button></li>
+                    <li><button onclick="router('contact')" class="hover:text-white transition">Contact Us</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Weekly Pawesome Tips</h4>
+                <p class="text-xs mb-3 text-slate-400">Join 15,000+ pet owners receiving our best advice.</p>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="Enter your email" class="bg-slate-800 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-blue-500 transition">
+                    <button onclick="handleSubscribe(this)" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-white text-sm font-semibold transition">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+            <p>&copy; 2026 PetPulse Network. All rights reserved. Content is for informational purposes only and does not substitute professional veterinary advice.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- DATA STORE (Simulating a CMS) ---
+
+        const breeds = [
+            {
+                id: 1,
+                name: "Golden Retriever",
+                group: "Sporting Group",
+                personality: "Friendly, Intelligent, Devoted",
+                lifespan: "10-12 years",
+                img: "https://images.unsplash.com/photo-1633722715463-d30f4f325e24?q=80&w=800&auto=format&fit=crop",
+                desc: "The Golden Retriever is a sturdy, muscular dog of medium size, famous for the dense, lustrous coat of gold that gives the breed its name. They are eager to please and make excellent family pets.",
+                stats: { energy: "High", shedding: "High", trainability: "Very High" }
+            },
+            {
+                id: 2,
+                name: "Siamese Cat",
+                group: "Shorthair",
+                personality: "Social, Affectionate, Vocal",
+                lifespan: "15-20 years",
+                img: "https://images.unsplash.com/photo-1513245543132-31f507417b26?q=80&w=800&auto=format&fit=crop",
+                desc: "The Siamese is the legendary temple cat of the King of Siam. They are known for their chiseled looks and distinct color points. They are 'people cats' who love to talk.",
+                stats: { energy: "Medium", shedding: "Low", trainability: "High" }
+            },
+            {
+                id: 3,
+                name: "French Bulldog",
+                group: "Non-Sporting",
+                personality: "Adaptable, Playful, Smart",
+                lifespan: "10-12 years",
+                img: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=800&auto=format&fit=crop",
+                desc: "The one-of-a-kind Frenchie, with his large bat ears and even disposition, is one of the world's most popular small-dog breeds. Great for apartment living.",
+                stats: { energy: "Low", shedding: "Medium", trainability: "Medium" }
+            },
+            {
+                id: 4,
+                name: "Maine Coon",
+                group: "Longhair",
+                personality: "Gentle, Large, Dog-like",
+                lifespan: "12-15 years",
+                img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=800&auto=format&fit=crop",
+                desc: "The gentle giant of the cat world. Known for their size, tufted ears, and bushy tails, Maine Coons are affectionate without being needy.",
+                stats: { energy: "Medium", shedding: "High", trainability: "High" }
+            }
+        ];
+
+        const products = [
+            {
+                id: 101,
+                title: "Best Dog Foods for Allergies (2026 Edition)",
+                category: "Food Reviews",
+                author: "Emily Parker, Pet Nutritionist",
+                date: "Jan 15, 2026",
+                summary: "We tested 15 brands. Here are the top grain-free and limited-ingredient options for sensitive stomachs.",
+                topPick: "Purina Pro Plan Sensitive",
+                img: "https://images.unsplash.com/photo-1589924691195-41432c84c161?q=80&w=800&auto=format&fit=crop",
+                fullContent: `
+                    <p class="lead text-lg text-gray-600 mb-6">If your dog is scratching constantly, suffering from ear infections, or dealing with digestive issues, food allergies might be the culprit. In this comprehensive guide, we analyze the top dog foods formulated for sensitive stomachs in 2026.</p>
+                    
+                    <h2>Understanding Dog Food Allergies</h2>
+                    <p>Unlike humans who often react to peanuts or shellfish with immediate anaphylaxis, dogs typically manifest allergies through their skin. The most common allergens for dogs include beef, dairy, wheat, egg, chicken, lamb, and soy.</p>
+                    
+                    <h3>Signs Your Dog Needs a Diet Change</h3>
+                    <ul>
+                        <li>Chronic itching or paw licking</li>
+                        <li>Recurring ear infections</li>
+                        <li>Vomiting or diarrhea</li>
+                        <li>Poor coat quality</li>
+                    </ul>
+
+                    <h2>Top 3 Picks for 2026</h2>
+                    
+                    <div class="seo-table-container">
+                        <table class="seo-table">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Main Protein</th>
+                                    <th>Grain-Free?</th>
+                                    <th>Best For</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Purina Pro Plan Sensitive Skin & Stomach</strong></td>
+                                    <td>Salmon</td>
+                                    <td>No (Oatmeal)</td>
+                                    <td>Overall Health</td>
+                                    <td>5/5</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Blue Buffalo Basics Limited Ingredient</strong></td>
+                                    <td>Turkey</td>
+                                    <td>Yes</td>
+                                    <td>Severe Allergies</td>
+                                    <td>4.5/5</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hill's Science Diet Z/D</strong></td>
+                                    <td>Hydrolyzed Chicken</td>
+                                    <td>Yes</td>
+                                    <td>Prescription Needs</td>
+                                    <td>4.8/5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>1. Purina Pro Plan Sensitive Skin & Stomach (Winner)</h3>
+                    <p>This formula uses nutrient-rich salmon as the first ingredient. It includes oatmeal, which is easily digestible and gentle on the digestive system. Fortified with live probiotics, it supports immune health.</p>
+                    <p><strong>Pros:</strong> Widely available, backed by science, highly palatable.</p>
+                    <p><strong>Cons:</strong> Contains grains (though healthy ones).</p>
+
+                    <h3>2. Blue Buffalo Basics</h3>
+                    <p>A true limited-ingredient diet. It avoids chicken, beef, dairy, eggs, and corn. If you need to conduct an elimination diet, this is an excellent over-the-counter choice.</p>
+
+                    <h2>FAQs About Hypoallergenic Dog Food</h2>
+                    <div class="space-y-4 mt-4">
+                        <details class="bg-gray-50 p-4 rounded border border-gray-200">
+                            <summary class="font-bold cursor-pointer text-blue-700">How long does it take to see results?</summary>
+                            <p class="mt-2 text-sm">It typically takes 8-12 weeks of a strict diet trial to see significant improvement in skin conditions, though digestive improvements may happen sooner.</p>
+                        </details>
+                        <details class="bg-gray-50 p-4 rounded border border-gray-200">
+                            <summary class="font-bold cursor-pointer text-blue-700">Are grain-free diets safe?</summary>
+                            <p class="mt-2 text-sm">Grain-free diets are generally safe, but consult your vet. Some studies are investigating links between grain-free diets and heart issues (DCM) in certain breeds, so only switch if necessary.</p>
+                        </details>
+                    </div>
+                `
+            },
+            {
+                id: 102,
+                title: "Top 5 Indestructible Toys for Heavy Chewers",
+                category: "Toy Reviews",
+                author: "Mark Davis, Trainer",
+                date: "Jan 10, 2026",
+                summary: "Tired of buying toys that last 5 minutes? These 5 rubber toys survived our aggressive chewer test.",
+                topPick: "Kong Extreme",
+                img: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=800&auto=format&fit=crop",
+                fullContent: `
+                    <p class="lead text-lg text-gray-600 mb-6">We gave 5 different "tough" toys to a Pitbull, a Rottweiler, and a German Shepherd. Here is what survived the weekend.</p>
+                    
+                    <h2>Why Durability Matters</h2>
+                    <p>Ingesting plastic or stuffing can lead to life-threatening intestinal blockages. Investing in high-quality rubber toys is cheaper than an emergency vet visit.</p>
+
+                    <div class="seo-table-container">
+                        <table class="seo-table">
+                            <thead>
+                                <tr>
+                                    <th>Toy</th>
+                                    <th>Material</th>
+                                    <th>Chew Style</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Kong Extreme (Black)</strong></td>
+                                    <td>Natural Rubber</td>
+                                    <td>Power Chewer</td>
+                                    <td>$$</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Goughnuts Ring</strong></td>
+                                    <td>Reinforced Rubber</td>
+                                    <td>Destroyer</td>
+                                    <td>$$$</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nylabone DuraChew</strong></td>
+                                    <td>Nylon</td>
+                                    <td>Gnawer</td>
+                                    <td>$</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Our Top Pick: Kong Extreme</h3>
+                    <p>The gold standard. The black rubber formula is specifically designed for the toughest jaws. You can stuff it with peanut butter and freeze it for hours of entertainment.</p>
+                    
+                    <h3>Runner Up: Goughnuts Ring</h3>
+                    <p>This toy has a built-in safety indicator. If your dog chews down to the red inner core, you know it's time to take it away. They also offer a lifetime guarantee.</p>
+
+                    <h2>Safety Tips</h2>
+                    <ul>
+                        <li>Always supervise your dog with a new toy.</li>
+                        <li>Discard toys when chunks begin to break off.</li>
+                        <li>Size up: If the toy fits entirely in your dog's mouth, it is a choking hazard.</li>
+                    </ul>
+                `
+            }
+        ];
+
+        const health = [
+            {
+                id: 201,
+                title: "Senior Cat Care Checklist: 7 Things To Watch",
+                category: "Cat Health",
+                author: "Dr. Sarah Smith, DVM",
+                date: "Jan 20, 2026",
+                readTime: "5 min read",
+                summary: "As cats age, their needs change. From kidney health to mobility issues, here is your essential guide.",
+                img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=800&auto=format&fit=crop",
+                fullContent: `
+                    <p class="lead text-lg text-gray-600 mb-6">Cats are masters at hiding pain. By the time they show symptoms, an illness may be advanced. This checklist will help you catch issues early in your senior kitty (age 10+).</p>
+
+                    <h2>The Senior Cat Checklist</h2>
+
+                    <h3>1. Weight Changes</h3>
+                    <p>Weight loss in senior cats is <strong>never</strong> normal. It can indicate kidney disease, hyperthyroidism, or diabetes. Weigh your cat monthly.</p>
+
+                    <h3>2. Drinking & Urination</h3>
+                    <p>If the litter box is clumpier than usual or the water bowl is always empty, schedule a vet visit. These are classic signs of kidney failure or diabetes.</p>
+
+                    <h3>3. Mobility & Jumping</h3>
+                    <p>Arthritis is underdiagnosed in cats. If your cat no longer jumps on the counter or hesitates before jumping on the couch, they are likely in pain. Supplements like Glucosamine can help.</p>
+
+                    <h2>Vet Visit Schedule by Age</h2>
+                    <div class="seo-table-container">
+                        <table class="seo-table">
+                            <thead>
+                                <tr>
+                                    <th>Life Stage</th>
+                                    <th>Age Range</th>
+                                    <th>Recommended Visits</th>
+                                    <th>Key Tests</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Adult</td>
+                                    <td>1-7 Years</td>
+                                    <td>Annually</td>
+                                    <td>Physical Exam</td>
+                                </tr>
+                                <tr>
+                                    <td>Senior</td>
+                                    <td>7-10 Years</td>
+                                    <td>Annually</td>
+                                    <td>Bloodwork (CBC/Chem)</td>
+                                </tr>
+                                <tr>
+                                    <td>Geriatric</td>
+                                    <td>11+ Years</td>
+                                    <td>Every 6 Months</td>
+                                    <td>Thyroid & Blood Pressure</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>FAQs for Senior Cats</h2>
+                    <div class="space-y-4 mt-4">
+                        <details class="bg-gray-50 p-4 rounded border border-gray-200">
+                            <summary class="font-bold cursor-pointer text-blue-700">What should I feed my senior cat?</summary>
+                            <p class="mt-2 text-sm">Look for high-quality protein that is easy to digest. Wet food is often better than dry food for seniors as it helps with hydration.</p>
+                        </details>
+                        <details class="bg-gray-50 p-4 rounded border border-gray-200">
+                            <summary class="font-bold cursor-pointer text-blue-700">Is my cat sleeping too much?</summary>
+                            <p class="mt-2 text-sm">Seniors do sleep more (up to 18-20 hours), but if they are lethargic when awake or hiding constantly, consult your vet.</p>
+                        </details>
+                    </div>
+                `
+            },
+            {
+                id: 202,
+                title: "Puppy Vaccination Schedule 2026",
+                category: "Dog Health",
+                author: "Dr. James Wilson, DVM",
+                date: "Dec 12, 2025",
+                readTime: "8 min read",
+                summary: "Don't miss a shot. A complete timeline of core and non-core vaccines for your new puppy.",
+                img: "https://images.unsplash.com/photo-1591946614720-90a587da4a36?q=80&w=800&auto=format&fit=crop",
+                fullContent: `
+                    <p class="lead text-lg text-gray-600 mb-6">Vaccinations are the single most effective way to protect your puppy from fatal diseases. This guide breaks down exactly what they need and when.</p>
+
+                    <h2>Core vs. Non-Core Vaccines</h2>
+                    <p><strong>Core vaccines</strong> are mandatory for all dogs due to the severity and transmissibility of the diseases. <strong>Non-core</strong> depend on your lifestyle (hiking, boarding, geography).</p>
+
+                    <ul class="list-disc pl-5 my-4 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                        <li><strong>Core:</strong> Rabies, Distemper, Parvovirus, Adenovirus.</li>
+                        <li><strong>Non-Core:</strong> Bordetella (Kennel Cough), Lyme, Leptospirosis, Influenza.</li>
+                    </ul>
+
+                    <h2>The Timeline</h2>
+                    
+                    <div class="seo-table-container">
+                        <table class="seo-table">
+                            <thead>
+                                <tr>
+                                    <th>Age</th>
+                                    <th>Vaccines Needed</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>6-8 Weeks</strong></td>
+                                    <td>DHPP (1st round)</td>
+                                    <td>Distemper, Hepatitis, Parainfluenza, Parvo</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>10-12 Weeks</strong></td>
+                                    <td>DHPP (2nd round)</td>
+                                    <td>Start non-core like Lyme/Lepto if recommended</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>14-16 Weeks</strong></td>
+                                    <td>DHPP (3rd round), Rabies</td>
+                                    <td>Rabies is legally required in most states</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>1 Year</strong></td>
+                                    <td>Boosters</td>
+                                    <td>DHPP and Rabies boosters</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>Side Effects to Watch For</h2>
+                    <p>Most puppies handle vaccines fine. Mild lethargy or a small bump at the injection site is normal. However, seek emergency care if you see:</p>
+                    <ul>
+                        <li>Swollen face or muzzle</li>
+                        <li>Hives or severe itching</li>
+                        <li>Vomiting or diarrhea within an hour of the shot</li>
+                        <li>Difficulty breathing</li>
+                    </ul>
+                `
+            }
+        ];
+
+        // --- ROUTING & RENDERING LOGIC ---
+
+        const app = document.getElementById('app');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Newsletter Handler
+        function handleSubscribe(btn) {
+            // Find the input field (it is the previous sibling element)
+            const input = btn.previousElementSibling;
+            
+            if (input && input.value && input.value.includes('@')) {
+                // visual feedback
+                const originalText = btn.innerText;
+                btn.innerText = "Joined!";
+                btn.classList.add('bg-green-600');
+                btn.classList.remove('bg-blue-600');
+                
+                alert("Thanks for subscribing! \n\n(Note: Since this is a demo site, this email wasn't actually sent. To collect real emails on GitHub Pages, you can wrap this input in a <form> tag connected to a free service like Formspree.io)");
+                
+                input.value = "";
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('bg-green-600');
+                    btn.classList.add('bg-blue-600');
+                }, 3000);
+            } else {
+                alert("Please enter a valid email address.");
+            }
+        }
+
+        // Update Page Meta Data for SEO
+        function updateMeta(title, desc) {
+            document.title = title;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', desc);
+            window.scrollTo(0, 0);
+        }
+
+        function setActiveNav(id) {
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('nav-active'));
+            if (id !== 'home' && id !== 'privacy') {
+                const btn = document.getElementById(`nav-${id}`);
+                if (btn) btn.classList.add('nav-active');
+            }
+            mobileMenu.classList.add('hidden');
+        }
+
+        function router(route, params = {}) {
+            switch(route) {
+                case 'home':
+                    renderHome();
+                    break;
+                case 'breeds':
+                    renderBreeds();
+                    break;
+                case 'products':
+                    renderProducts();
+                    break;
+                case 'health':
+                    renderHealth();
+                    break;
+                case 'post':
+                    renderPost(params.id, params.type);
+                    break;
+                case 'privacy':
+                    renderPrivacy();
+                    break;
+                default:
+                    renderHome();
+            }
+        }
+
+        // --- PAGE VIEWS ---
+
+        function renderHome() {
+            setActiveNav('home');
+            updateMeta("PetPulse | The Ultimate Pet Care Network", "Expert advice on dog breeds, pet products, and veterinary health tips for modern pet owners.");
+            
+            app.innerHTML = `
+                <!-- Hero Section -->
+                <section class="text-center py-20 bg-gradient-to-b from-blue-50 to-white rounded-3xl mb-12 border border-blue-50">
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">Trusted by 15k+ Owners</span>
+                    <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">Expert Pet Care, <span class="text-blue-600">Simplified.</span></h1>
+                    <p class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">Your all-in-one destination for breed guides, honest product reviews, and vet-approved health tips.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="router('breeds')" class="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-200">Find a Breed</button>
+                        <button onclick="router('products')" class="bg-white text-blue-600 border border-slate-200 px-8 py-4 rounded-full font-semibold hover:bg-slate-50 transition shadow-sm">Read Reviews</button>
+                    </div>
+                </section>
+
+                <!-- Ad Slot: Leaderboard -->
+                <div class="ad-slot">
+                    <span class="block mb-2 text-xs font-bold text-slate-400">Advertisement</span>
+                    <div class="w-full max-w-[728px] h-[90px] bg-slate-100 flex items-center justify-center text-slate-400 text-xs">
+                        Google AdSense Leaderboard (728x90)
+                    </div>
+                </div>
+
+                <!-- Three Micro-Site Previews -->
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <!-- Breeds -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                        <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-6 text-2xl"><i class="fa-solid fa-dog"></i></div>
+                        <h2 class="text-2xl font-bold mb-3 text-slate-800">Breed Encyclopedia</h2>
+                        <p class="text-slate-600 mb-6 leading-relaxed">Detailed profiles on personality, care needs, and history for dogs and cats.</p>
+                        <button onclick="router('breeds')" class="text-blue-600 font-bold hover:text-blue-800 flex items-center gap-2">Explore Breeds <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+
+                    <!-- Products -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                        <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6 text-2xl"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <h2 class="text-2xl font-bold mb-3 text-slate-800">Product Hub</h2>
+                        <p class="text-slate-600 mb-6 leading-relaxed">Quarterly updated reviews. We find the best toys, food, and grooming tools.</p>
+                        <button onclick="router('products')" class="text-blue-600 font-bold hover:text-blue-800 flex items-center gap-2">Read Reviews <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+
+                    <!-- Health -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                        <div class="w-14 h-14 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-6 text-2xl"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h2 class="text-2xl font-bold mb-3 text-slate-800">Health & Tips</h2>
+                        <p class="text-slate-600 mb-6 leading-relaxed">Senior care checklists, puppy guides, and preventative health articles.</p>
+                        <button onclick="router('health')" class="text-blue-600 font-bold hover:text-blue-800 flex items-center gap-2">Get Advice <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Latest Updates Section (SEO Internal Linking) -->
+                <div class="mt-20">
+                    <h3 class="text-2xl font-bold mb-8 text-slate-800 border-l-4 border-blue-600 pl-4">Latest from the Network</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        ${products.slice(0,1).map(p => `
+                            <div onclick="router('post', {id: ${p.id}, type: 'product'})" class="flex items-center gap-4 bg-white p-4 rounded-xl border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                                <img src="${p.img}" class="w-24 h-24 object-cover rounded-lg">
+                                <div>
+                                    <span class="text-xs font-bold text-green-600 uppercase">${p.category}</span>
+                                    <h4 class="font-bold text-lg text-slate-800">${p.title}</h4>
+                                </div>
+                            </div>
+                        `).join('')}
+                        ${health.slice(0,1).map(h => `
+                            <div onclick="router('post', {id: ${h.id}, type: 'health'})" class="flex items-center gap-4 bg-white p-4 rounded-xl border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                                <img src="${h.img}" class="w-24 h-24 object-cover rounded-lg">
+                                <div>
+                                    <span class="text-xs font-bold text-red-600 uppercase">${h.category}</span>
+                                    <h4 class="font-bold text-lg text-slate-800">${h.title}</h4>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderBreeds() {
+            setActiveNav('breeds');
+            updateMeta("Pet Breed Encyclopedia | Dog & Cat Profiles", "Find the perfect pet for your lifestyle. Detailed guides on Golden Retrievers, Siamese Cats, French Bulldogs, and more.");
+
+            let breedCards = breeds.map(b => `
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden group hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="${b.img}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/60 to-transparent w-full p-4">
+                            <span class="text-white text-xs font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm px-2 py-1 rounded">${b.group}</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-800">${b.name}</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-50 text-blue-700 text-xs font-semibold px-2 py-1 rounded"><i class="fa-solid fa-heart text-[10px] mr-1"></i> ${b.personality.split(',')[0]}</span>
+                            <span class="bg-slate-100 text-slate-600 text-xs font-semibold px-2 py-1 rounded">${b.lifespan}</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6 line-clamp-3 leading-relaxed flex-grow">${b.desc}</p>
+                        
+                        <!-- Mini Stats Grid -->
+                        <div class="grid grid-cols-3 gap-2 text-center border-t pt-4">
+                            <div>
+                                <div class="text-[10px] uppercase text-slate-400 font-bold">Energy</div>
+                                <div class="text-xs font-bold text-slate-700">${b.stats.energy}</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] uppercase text-slate-400 font-bold">Shedding</div>
+                                <div class="text-xs font-bold text-slate-700">${b.stats.shedding}</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] uppercase text-slate-400 font-bold">Train</div>
+                                <div class="text-xs font-bold text-slate-700">${b.stats.trainability}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            app.innerHTML = `
+                <div class="mb-12 text-center max-w-2xl mx-auto">
+                    <h1 class="text-4xl font-bold mb-4 text-slate-900">Pet Breed Encyclopedia</h1>
+                    <p class="text-lg text-slate-600">Discover your perfect companion. Browse our comprehensive database of dog and cat breeds.</p>
+                </div>
+                
+                <div class="ad-slot">
+                    <span class="block mb-2 text-xs font-bold text-slate-400">Sponsored</span>
+                    <div class="w-full max-w-[728px] h-[90px] bg-slate-100 flex items-center justify-center text-slate-400 text-xs">
+                        AdSense Banner
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    ${breedCards}
+                </div>
+
+                <!-- SEO Content Block -->
+                <article class="mt-20 bg-blue-50 p-8 rounded-2xl border border-blue-100 prose prose-blue max-w-none">
+                    <h2 class="text-blue-900">How to Choose the Right Breed for Your Lifestyle</h2>
+                    <p>Choosing a pet is a 10-15 year commitment. In this encyclopedia, we break down energy levels, grooming needs, and temperament to help you match a pet to your specific situation.</p>
+                    <div class="grid md:grid-cols-2 gap-8 mt-6">
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-2">Consider Your Activity Level</h4>
+                            <p class="text-sm text-slate-600">If you are an avid runner, a sporting breed like a Golden Retriever is ideal. If you prefer reading on the couch, a French Bulldog or Ragdoll cat might be better suited.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-2">Consider Your Living Space</h4>
+                            <p class="text-sm text-slate-600">Large breeds need space to move. Small apartments are often better suited for toy breeds or cats, though some large dogs (like Great Danes) are surprisingly low-energy indoors.</p>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderProducts() {
+            setActiveNav('products');
+            updateMeta("Best Pet Products 2026 | Food, Toys & Gear Reviews", "Unbiased, hands-on reviews of the best dog food, indestructible toys, and pet grooming supplies.");
+
+            let productCards = products.map(p => `
+                <article class="flex flex-col md:flex-row bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition mb-8">
+                    <div class="md:w-1/3 h-64 md:h-auto relative">
+                         <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover">
+                         <div class="absolute top-3 left-3 bg-green-600 text-white text-xs font-bold px-3 py-1.5 rounded shadow-lg uppercase tracking-wide">Top Pick: ${p.topPick}</div>
+                    </div>
+                    <div class="p-8 md:w-2/3 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-green-600 font-bold text-sm tracking-wide uppercase">${p.category}</span>
+                                <span class="text-slate-400 text-xs bg-slate-50 border border-slate-200 px-2 py-1 rounded flex items-center gap-1"><i class="fa-regular fa-calendar"></i> ${p.date}</span>
+                            </div>
+                            <h2 class="text-2xl font-bold mb-3 text-slate-800 hover:text-blue-600 cursor-pointer transition" onclick="router('post', {id: ${p.id}, type: 'product'})">${p.title}</h2>
+                            <p class="text-slate-600 mb-6 leading-relaxed">${p.summary}</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-auto">
+                            <div class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+                                <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center"><i class="fa-solid fa-user"></i></div>
+                                ${p.author}
+                            </div>
+                            <button onclick="router('post', {id: ${p.id}, type: 'product'})" class="text-white bg-slate-900 hover:bg-blue-600 px-5 py-2 rounded-lg text-sm font-semibold transition">Read Full Review</button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            app.innerHTML = `
+                <div class="mb-12 border-b pb-8">
+                    <h1 class="text-4xl font-bold mb-4 text-slate-900">Pet Product Hub</h1>
+                    <p class="text-lg text-slate-600 max-w-3xl">We buy, test, and review pet products so you don't waste your money. Our reviews are unbiased and hands-on.</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4">
+                    ${productCards}
+                </div>
+
+                <div class="ad-slot my-12">
+                    <span class="block mb-2 text-xs font-bold text-slate-400">Sponsored</span>
+                    <div class="w-full max-w-[728px] h-[90px] bg-slate-100 flex items-center justify-center text-slate-400 text-xs">
+                        In-Feed Native Ad
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHealth() {
+            setActiveNav('health');
+            updateMeta("Pet Health Tips | Vet Approved Advice", "Expert veterinary advice for dogs and cats. Vaccination schedules, senior care, and preventative health checklists.");
+
+            let healthCards = health.map(h => `
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 hover:shadow-xl hover:-translate-y-1 transition duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-red-500"></div>
+                    <div class="flex items-center gap-3 mb-4 text-sm">
+                        <span class="bg-red-50 text-red-600 px-3 py-1 rounded-full font-bold text-xs uppercase">${h.category}</span>
+                        <span class="text-slate-400 text-xs flex items-center gap-1"><i class="fa-regular fa-clock"></i> ${h.readTime}</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800 group-hover:text-blue-600 transition cursor-pointer" onclick="router('post', {id: ${h.id}, type: 'health'})">${h.title}</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed">${h.summary}</p>
+                    <div class="flex items-center justify-between border-t pt-4">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-slate-100 overflow-hidden">
+                                <img src="https://ui-avatars.com/api/?name=${h.author}&background=random" alt="Author">
+                            </div>
+                            <span class="text-xs font-bold text-slate-700">${h.author}</span>
+                        </div>
+                        <button onclick="router('post', {id: ${h.id}, type: 'health'})" class="text-blue-600 font-bold text-sm hover:underline">Read Article</button>
+                    </div>
+                </div>
+            `).join('');
+
+            app.innerHTML = `
+                <div class="mb-12 text-center max-w-2xl mx-auto">
+                    <h1 class="text-4xl font-bold mb-4 text-slate-900">Health & Care Center</h1>
+                    <p class="text-lg text-slate-600">Vet-approved checklists, guides, and medical explanations to help your pet live longer.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    ${healthCards}
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mt-16">
+                    <div class="md:col-span-2 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+                         <h2 class="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-2"><i class="fa-solid fa-circle-question text-blue-600"></i> Common Questions</h2>
+                         <div class="space-y-4">
+                            <details class="group">
+                                <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 bg-slate-50 rounded-lg group-open:bg-blue-50 group-open:text-blue-700 transition">
+                                    How often should I take my senior cat to the vet?
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
+                                </summary>
+                                <div class="text-slate-600 mt-3 px-4 pb-4">
+                                    <p>For cats over 10 years old, we recommend bi-annual checkups (every 6 months). Senior cats age rapidly, and frequent bloodwork can catch kidney disease or hyperthyroidism before they become critical.</p>
+                                </div>
+                            </details>
+                            <details class="group">
+                                <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 bg-slate-50 rounded-lg group-open:bg-blue-50 group-open:text-blue-700 transition">
+                                    Is pet insurance worth it?
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
+                                </summary>
+                                <div class="text-slate-600 mt-3 px-4 pb-4">
+                                    <p>Yes, especially if purchased when the pet is young. Emergency surgeries for bloat or foreign object ingestion can cost $3,000-$5,000. Insurance provides a financial safety net.</p>
+                                </div>
+                            </details>
+                         </div>
+                    </div>
+                    <div class="md:col-span-1">
+                        <div class="ad-slot h-full">
+                            <span class="block mb-2 text-xs font-bold text-slate-400">Sponsored</span>
+                            <div class="w-[300px] h-[250px] bg-slate-100 flex items-center justify-center text-slate-400 text-xs">
+                                Square Ad (300x250)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPost(id, type) {
+            setActiveNav(type === 'product' ? 'products' : 'health');
+            
+            // Find data
+            const source = type === 'product' ? products : health;
+            const post = source.find(p => p.id === parseInt(id));
+
+            if (!post) {
+                renderHome(); // Fallback
+                return;
+            }
+
+            updateMeta(`${post.title} | PetPulse`, post.summary);
+            window.scrollTo(0, 0);
+
+            app.innerHTML = `
+                <!-- Breadcrumb -->
+                <nav class="flex mb-8 text-sm text-slate-500" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                        <li class="inline-flex items-center">
+                            <a href="#" onclick="router('home')" class="hover:text-blue-600">Home</a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-chevron-right text-xs mx-2"></i>
+                                <a href="#" onclick="router('${type === 'product' ? 'products' : 'health'}')" class="hover:text-blue-600 capitalize">${type === 'product' ? 'Product Hub' : 'Health Tips'}</a>
+                            </div>
+                        </li>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-chevron-right text-xs mx-2"></i>
+                                <span class="text-slate-800 font-medium truncate max-w-[200px]">${post.title}</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
+
+                <article class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <!-- Main Content Column -->
+                    <div class="lg:col-span-2">
+                        <header class="mb-8">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">${post.category}</span>
+                            <h1 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">${post.title}</h1>
+                            <div class="flex items-center gap-4 text-slate-500 text-sm border-b border-slate-100 pb-8">
+                                <span class="flex items-center gap-2 font-medium text-slate-700">
+                                    <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center overflow-hidden">
+                                         <img src="https://ui-avatars.com/api/?name=${post.author}&background=random" alt="${post.author}">
+                                    </div>
+                                    ${post.author}
+                                </span>
+                                <span>•</span>
+                                <span>Updated: ${post.date}</span>
+                                ${post.readTime ? `<span>•</span><span>${post.readTime}</span>` : ''}
+                            </div>
+                        </header>
+
+                        <img src="${post.img}" alt="${post.title}" class="w-full h-auto rounded-2xl mb-10 shadow-sm">
+
+                        <!-- Full Blog Content -->
+                        <div class="blog-content text-lg text-slate-700 leading-relaxed">
+                            ${post.fullContent}
+                        </div>
+
+                        <!-- Share Buttons -->
+                        <div class="mt-12 pt-8 border-t border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-4">Share this article:</h4>
+                            <div class="flex gap-3">
+                                <button class="bg-[#3b5998] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90"><i class="fa-brands fa-facebook-f"></i></button>
+                                <button class="bg-[#1da1f2] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90"><i class="fa-brands fa-twitter"></i></button>
+                                <button class="bg-[#bd081c] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90"><i class="fa-brands fa-pinterest-p"></i></button>
+                                <button class="bg-[#25d366] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90"><i class="fa-brands fa-whatsapp"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="lg:col-span-1 space-y-8">
+                        <!-- Ad Slot -->
+                        <div class="ad-slot bg-white border border-slate-200 shadow-sm rounded-xl">
+                            <span class="block mb-2 text-xs font-bold text-slate-400">Advertisement</span>
+                            <div class="w-[300px] h-[250px] bg-slate-100 flex items-center justify-center text-slate-400 text-xs">
+                                Sidebar Ad (300x250)
+                            </div>
+                        </div>
+
+                        <!-- Related Links -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                            <h3 class="font-bold text-slate-800 mb-4 border-b pb-2">Related Articles</h3>
+                            <ul class="space-y-4">
+                                ${type === 'product' ? 
+                                    products.filter(p => p.id !== post.id).map(p => `
+                                        <li>
+                                            <a href="#" onclick="router('post', {id: ${p.id}, type: 'product'})" class="group flex gap-3">
+                                                <img src="${p.img}" class="w-16 h-16 rounded object-cover">
+                                                <span class="text-sm font-medium text-slate-700 group-hover:text-blue-600 leading-snug">${p.title}</span>
+                                            </a>
+                                        </li>
+                                    `).join('') 
+                                    : 
+                                    health.filter(h => h.id !== post.id).map(h => `
+                                        <li>
+                                            <a href="#" onclick="router('post', {id: ${h.id}, type: 'health'})" class="group flex gap-3">
+                                                <img src="${h.img}" class="w-16 h-16 rounded object-cover">
+                                                <span class="text-sm font-medium text-slate-700 group-hover:text-blue-600 leading-snug">${h.title}</span>
+                                            </a>
+                                        </li>
+                                    `).join('')
+                                }
+                                <li>
+                                    <a href="#" onclick="router('breeds')" class="group flex gap-3">
+                                        <div class="w-16 h-16 bg-orange-100 rounded flex items-center justify-center text-orange-500"><i class="fa-solid fa-dog"></i></div>
+                                        <span class="text-sm font-medium text-slate-700 group-hover:text-blue-600 leading-snug">Browse our Dog Breed Encyclopedia</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Newsletter Tiny -->
+                        <div class="bg-blue-600 p-6 rounded-xl text-white text-center">
+                            <i class="fa-solid fa-envelope-open-text text-3xl mb-3 opacity-80"></i>
+                            <h3 class="font-bold mb-2">Don't Miss Out</h3>
+                            <p class="text-xs text-blue-100 mb-4">Get the latest reviews delivered to your inbox.</p>
+                            <input type="email" placeholder="Your Email" class="w-full text-slate-800 px-3 py-2 rounded mb-2 text-sm">
+                            <button onclick="handleSubscribe(this)" class="w-full bg-slate-900 hover:bg-slate-800 py-2 rounded text-sm font-bold transition">Subscribe</button>
+                        </div>
+                    </aside>
+                </article>
+            `;
+        }
+
+        function renderPrivacy() {
+            setActiveNav('privacy');
+            updateMeta("Privacy Policy | PetPulse", "Privacy Policy and Terms of Service for PetPulse.");
+
+            app.innerHTML = `
+                <div class="max-w-3xl mx-auto bg-white p-10 rounded-2xl shadow-sm border border-slate-100 my-8">
+                    <h1 class="text-3xl font-bold mb-6 text-slate-900">Privacy Policy</h1>
+                    <div class="prose prose-sm text-slate-600">
+                        <p class="mb-4"><strong>Last Updated: January 2026</strong></p>
+                        <p class="mb-4">At PetPulse, accessible from petpulse.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by PetPulse and how we use it.</p>
+                        
+                        <h3 class="text-lg font-bold text-slate-800 mt-6 mb-2">Log Files</h3>
+                        <p class="mb-4">PetPulse follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics.</p>
+                        
+                        <h3 class="text-lg font-bold text-slate-800 mt-6 mb-2">Google DoubleClick DART Cookie</h3>
+                        <p class="mb-4">Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet.</p>
+                        
+                        <h3 class="text-lg font-bold text-slate-800 mt-6 mb-2">Our Advertising Partners</h3>
+                        <p class="mb-4">Some of advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has their own Privacy Policy for their policies on user data.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize Home
+        renderHome();
+
+    </script>
+</body>
+</html>
